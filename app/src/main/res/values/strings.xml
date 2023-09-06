@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TA Rangga</string>
+    <string name="title_home">Monitoring</string>
+    <string name="title_dashboard">Automatic</string>
+    <string name="title_notifications">Manual</string>
+    <string name="coba_string">ini percobaan string...</string>
+</resources>
