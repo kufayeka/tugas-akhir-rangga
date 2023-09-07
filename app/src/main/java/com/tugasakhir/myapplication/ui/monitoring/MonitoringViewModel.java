@@ -1,19 +1,12 @@
 package com.tugasakhir.myapplication.ui.monitoring;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MonitoringViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
-
-    public MonitoringViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("Ini Halaman Monitoring...");
+    public MonitoringViewModel(){
+        // constructor : set nilai parameter2 saat pertama kali class ini dijalankan
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+    // tulis method/fungsi tambahan disini
 }

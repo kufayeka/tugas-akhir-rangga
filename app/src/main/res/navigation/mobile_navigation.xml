@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
+    app:startDestination="@id/monitoringFragment">
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.tugasakhir.myapplication.ui.monitoring.MonitoringFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_monitoring" />
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.tugasakhir.myapplication.ui.automatic.AutomaticFragment"
-        android:label="@string/title_dashboard"
+        android:id="@+id/automaticFragment"
+        android:name="com.tugasakhir.myapplication.ui.automatic.AutomaticViewFragment"
+        android:label="fragment_automatic"
         tools:layout="@layout/fragment_automatic" />
-
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.tugasakhir.myapplication.ui.manual.ManualFragment"
-        android:label="@string/title_notifications"
+        android:id="@+id/manualFragment"
+        android:name="com.tugasakhir.myapplication.ui.manual.ManualViewFragment"
+        android:label="fragment_manual"
         tools:layout="@layout/fragment_manual" />
+    <fragment
+        android:id="@+id/monitoringFragment"
+        android:name="com.tugasakhir.myapplication.ui.monitoring.MonitoringViewFragment"
+        android:label="fragment_monitoring"
+        tools:layout="@layout/fragment_monitoring" />
 </navigation>

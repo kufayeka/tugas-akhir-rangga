@@ -1,39 +1,65 @@
 package com.tugasakhir.myapplication;
 
-import android.os.Bundle;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.fragment.app.Fragment;
 
-import com.tugasakhir.myapplication.databinding.ActivityMainBinding;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.MenuItem;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.tugasakhir.myapplication.ui.automatic.AutomaticViewFragment;
+import com.tugasakhir.myapplication.ui.manual.ManualViewFragment;
+import com.tugasakhir.myapplication.ui.monitoring.MonitoringViewFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private Fragment fragment1, fragment2, fragment3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        // Inisialisasi fragment
+        fragment1 = new MonitoringViewFragment();
+        fragment2 = new AutomaticViewFragment();
+        fragment3 = new ManualViewFragment();
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Tampilkan fragment pertama saat Activity pertama kali dibuat
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment1)
+                .commit();
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_monitoring,
-                R.id.navigation_automatic,
-                R.id.navigation_manual)
-                .build();
+        // Inisialisasi BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        // Add Listener untuk item-menu yang diklik
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_monitoring: // Tampilkan Fragment1
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, fragment1)
+                                .commit();
+                        return true;
+                    case R.id.navigation_automatic: // Tampilkan Fragment2
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, fragment2)
+                                .commit();
+                        return true;
+                    case R.id.navigation_manual: // Tampilkan Fragment3
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, fragment3)
+                                .commit();
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
-
 }

@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.44243792325056436" />
+        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/drawable/icon_automatic.xml" value="0.1" />
+        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/drawable/icon_manual.xml" value="0.1" />
+        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/drawable/icon_monitoring.xml" value="0.1" />
+        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/fragment_automatic.xml" value="0.1539855072463768" />
         <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/fragment_dashboard.xml" value="0.18704710144927536" />
         <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/fragment_home.xml" value="0.16621376811594202" />
         <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/fragment_manual.xml" value="0.1539855072463768" />
-        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/fragment_monitoring.xml" value="0.1539855072463768" />
+        <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/fragment_monitoring.xml" value="0.18" />
         <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/layout/fragment_notifications.xml" value="0.18704710144927536" />
         <entry key="..\:/Users/yeKaa/StudioProjects/MyApplication/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
       </map>

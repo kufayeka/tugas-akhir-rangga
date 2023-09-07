@@ -1,19 +1,12 @@
 package com.tugasakhir.myapplication.ui.manual;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class ManualViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
-
-    public ManualViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+    public ManualViewModel(){
+        // constructor : set nilai parameter2 saat pertama kali class ini dijalankan
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+    // tulis method/fungsi tambahan disini
 }
