@@ -5,6 +5,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tugasakhir.myapplication.R;
+import com.tugasakhir.myapplication.handler.AntaresAPI;
+import com.tugasakhir.myapplication.handler.AntaresOnResponseCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import id.co.telkom.iot.AntaresResponse;
 
 public class AutomaticViewController {
 
@@ -14,8 +21,7 @@ public class AutomaticViewController {
     private Button btnStart;
     private Button btnStop;
 
-    public AutomaticViewController(View view){
-        final AutomaticViewController self = this;
+    public AutomaticViewController(View view) {
         this.logic = new AutomaticViewLogic();
 
         this.textView = view.findViewById(R.id.text_response_data);
@@ -26,14 +32,7 @@ public class AutomaticViewController {
         this.btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // panggil logic getData di class AutomaticViewLogic
-                // hasilnya di tampilin ke layar lewat method updateTextResponseData (harus diawali self dulu!)
-                logic.getData(new AutomaticViewLogic.DataCallback() {
-                    @Override
-                    public void onDataReceived(String x) {
-                        self.updateTextResponseData(x);
-                    }
-                });
+                logic.getData();
             }
         });
 
@@ -42,7 +41,7 @@ public class AutomaticViewController {
             @Override
             public void onClick(View view) {
                 // ganti jadi tulisan lain
-                self.updateTextResponseData("ini tombol stop");
+                updateTextResponseData("ini tombol stop");
             }
         });
     }
@@ -50,6 +49,4 @@ public class AutomaticViewController {
     public void updateTextResponseData(String content){
         textView.setText(content);
     }
-
-
 }

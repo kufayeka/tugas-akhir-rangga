@@ -24,7 +24,6 @@ public class AutomaticViewFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(AutomaticViewLogic.class);
     }
 
     @Override
