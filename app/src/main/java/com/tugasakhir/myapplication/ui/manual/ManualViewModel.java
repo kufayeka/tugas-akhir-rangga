@@ -8,5 +8,5 @@ public class ManualViewModel extends ViewModel {
         // constructor : set nilai parameter2 saat pertama kali class ini dijalankan
     }
 
-    // tulis method/fungsi tambahan disini
+    // tulis method/fungsi/business logic tambahan disini
 }
