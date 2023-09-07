@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 public class AutomaticViewModel extends ViewModel {
 
     public AutomaticViewModel(){
-        // constructor : set nilai parameter2 saat pertama kali class ini dijalankan
+        // constructor : ini method buat set nilai parameter2 saat pertama kali class ini dijalankan
     }
 
     // tulis method/fungsi/business logic tambahan disini
