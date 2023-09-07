@@ -8,11 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tugasakhir.myapplication.R;
-import com.tugasakhir.myapplication.ui.manual.ManualViewModel;
 
 public class ManualViewFragment extends Fragment {
 
-    private ManualViewModel viewModel;
+    private ManualViewLogic viewModel;
 
     public ManualViewFragment() {
         // constructor kosong
@@ -21,7 +20,7 @@ public class ManualViewFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(ManualViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ManualViewLogic.class);
     }
 
     @Override

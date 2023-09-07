@@ -1,10 +1,10 @@
-package com.tugasakhir.myapplication.ui.monitoring;
+package com.tugasakhir.myapplication.ui.manual;
 
 import androidx.lifecycle.ViewModel;
 
-public class MonitoringViewModel extends ViewModel {
+public class ManualViewLogic extends ViewModel {
 
-    public MonitoringViewModel(){
+    public ManualViewLogic(){
         // constructor : ini method buat set nilai parameter2 saat pertama kali class ini dijalankan
     }
 
