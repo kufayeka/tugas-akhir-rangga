@@ -1,17 +1,14 @@
 package com.tugasakhir.myapplication.ui.automatic;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.tugasakhir.myapplication.R;
-import com.tugasakhir.myapplication.handler.AntaresAPI;
-import com.tugasakhir.myapplication.handler.AntaresOnResponseCallback;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import id.co.telkom.iot.AntaresResponse;
+import java.util.concurrent.CompletableFuture;
 
 public class AutomaticViewController {
 
@@ -20,6 +17,7 @@ public class AutomaticViewController {
     private TextView textView;
     private Button btnStart;
     private Button btnStop;
+    private Handler handler;
 
     public AutomaticViewController(View view) {
         this.logic = new AutomaticViewLogic();
@@ -28,25 +26,64 @@ public class AutomaticViewController {
         this.btnStart = view.findViewById(R.id.button_start);
         this.btnStop = view.findViewById(R.id.button_stop);
 
-        // handle logic tombol start
-        this.btnStart.setOnClickListener(new View.OnClickListener() {
+        SetupButtonListener();
+
+        handler = new Handler(Looper.getMainLooper());
+    }
+
+    private void SetupButtonListener() {
+        btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logic.getData();
+                handler.postDelayed(updateDataRunnable, 1000);
             }
         });
 
-        // handle logic tombol stop
-        this.btnStop.setOnClickListener(new View.OnClickListener() {
+        btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // ganti jadi tulisan lain
+                handler.removeCallbacks(updateDataRunnable);
                 updateTextResponseData("ini tombol stop");
             }
         });
     }
 
-    public void updateTextResponseData(String content){
-        textView.setText(content);
+    private Runnable updateDataRunnable = new Runnable() {
+        @Override
+        public void run() {
+            UpdateData();
+            handler.postDelayed(this, 1000);
+        }
+    };
+
+    private void UpdateData() {
+        CompletableFuture<String> result = logic.getData();
+
+        result.thenAccept(res -> {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("Data yang diterima: " + res);
+                    updateTextResponseData(res);
+                }
+            });
+        }).exceptionally(ex -> {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    System.err.println("Terjadi kesalahan: " + ex.getMessage());
+                }
+            });
+            return null;
+        });
+    }
+
+    private void updateTextResponseData(String content) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                textView.setText(content);
+            }
+        });
     }
 }

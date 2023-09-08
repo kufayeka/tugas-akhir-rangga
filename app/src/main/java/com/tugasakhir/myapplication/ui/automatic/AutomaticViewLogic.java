@@ -1,15 +1,10 @@
 package com.tugasakhir.myapplication.ui.automatic;
 
-
-import androidx.lifecycle.ViewModel;
-
 import com.tugasakhir.myapplication.handler.AntaresAPI;
-import com.tugasakhir.myapplication.handler.AntaresOnResponseCallback;
-import com.tugasakhir.myapplication.handler.HttpService;
 import com.tugasakhir.myapplication.variables.GlobalVariable;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.CompletableFuture;
+
 
 public class AutomaticViewLogic {
 
@@ -21,11 +16,12 @@ public class AutomaticViewLogic {
         this.antaresAPI = new AntaresAPI();
     }
 
-    public void getData(){
-        antaresAPI.getLatestDataOfDevice(
+    public CompletableFuture<String> getData() {
+        return antaresAPI.getLatestDataOfDevice(
                 globalVariable.accessKey,
                 globalVariable.applicationName,
-                globalVariable.deviceName);
+                globalVariable.deviceName
+        );
     }
 
 }

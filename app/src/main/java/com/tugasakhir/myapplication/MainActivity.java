@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.tugasakhir.myapplication.handler.HttpService;
 import com.tugasakhir.myapplication.ui.automatic.AutomaticViewFragment;
 import com.tugasakhir.myapplication.ui.manual.ManualViewFragment;
 import com.tugasakhir.myapplication.ui.monitoring.MonitoringViewFragment;
