@@ -12,78 +12,31 @@ import java.util.concurrent.CompletableFuture;
 
 public class AutomaticViewController {
 
-    private AutomaticViewLogic logic;
+    private AutomaticViewLogic x;
 
     private TextView textView;
     private Button btnStart;
     private Button btnStop;
-    private Handler handler;
 
+    // constructor = otomatis dijalankan saat class pertama kali di inisialisasi.
     public AutomaticViewController(View view) {
-        this.logic = new AutomaticViewLogic();
+        x = new AutomaticViewLogic();
 
-        this.textView = view.findViewById(R.id.text_response_data);
-        this.btnStart = view.findViewById(R.id.button_start);
-        this.btnStop = view.findViewById(R.id.button_stop);
+        textView = view.findViewById(R.id.text_response_data);
+        btnStart = view.findViewById(R.id.button_start);
+        btnStop = view.findViewById(R.id.button_stop);
 
-        SetupButtonListener();
-
-        handler = new Handler(Looper.getMainLooper());
+        setupListenerButton();
     }
 
-    private void SetupButtonListener() {
+    ////////////////////////////////INI METHOD CUSTOM//////////////////////////////////////////////
+    private void setupListenerButton(){
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                handler.postDelayed(updateDataRunnable, 1000);
-            }
-        });
-
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handler.removeCallbacks(updateDataRunnable);
-                updateTextResponseData("ini tombol stop");
+                x.postDataStart();
             }
         });
     }
 
-    private Runnable updateDataRunnable = new Runnable() {
-        @Override
-        public void run() {
-            UpdateData();
-            handler.postDelayed(this, 1000);
-        }
-    };
-
-    private void UpdateData() {
-        CompletableFuture<String> result = logic.getData();
-
-        result.thenAccept(res -> {
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println("Data yang diterima: " + res);
-                    updateTextResponseData(res);
-                }
-            });
-        }).exceptionally(ex -> {
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    System.err.println("Terjadi kesalahan: " + ex.getMessage());
-                }
-            });
-            return null;
-        });
-    }
-
-    private void updateTextResponseData(String content) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                textView.setText(content);
-            }
-        });
-    }
 }

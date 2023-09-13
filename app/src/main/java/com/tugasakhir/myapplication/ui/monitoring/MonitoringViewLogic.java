@@ -5,17 +5,32 @@ import android.content.Context;
 import androidx.lifecycle.ViewModel;
 
 
+import com.tugasakhir.myapplication.handler.AntaresAPI;
+import com.tugasakhir.myapplication.variables.GlobalVariable;
+
+import org.json.JSONObject;
+
 import java.net.ContentHandler;
 import java.net.HttpURLConnection;
 
 public class MonitoringViewLogic extends ViewModel {
 
-    private HttpURLConnection httpURLConnection;
+    private AntaresAPI api;
+    private GlobalVariable var;
 
     public MonitoringViewLogic(){
-        // constructor : ini method buat set nilai parameter2 saat pertama kali class ini dijalankan
-
+        api = new AntaresAPI();
+        var = new GlobalVariable();
     }
 
+    //////////////////////////////////////////////////////////
+
+    public String getData(){
+//        api.getLatestDataOfDevice(var.accessKey, var.applicationName, var.deviceName);
+
+        String hasilReturn = "ini data return";
+
+        return hasilReturn;
+    }
 
 }

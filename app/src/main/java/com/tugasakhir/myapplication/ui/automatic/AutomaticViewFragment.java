@@ -32,6 +32,8 @@ public class AutomaticViewFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_automatic, container, false);
     }
 
+
+    // onViewCreated == kondisi dimana UI itu sudah tampil di layar pengguna.
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

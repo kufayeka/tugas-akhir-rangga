@@ -1,7 +1,5 @@
 package com.tugasakhir.myapplication.handler;
 
-import com.tugasakhir.myapplication.ui.automatic.AutomaticViewController;
-import com.tugasakhir.myapplication.ui.automatic.AutomaticViewLogic;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,14 +14,13 @@ public class AntaresAPI {
 
     private AntaresHTTPAPI antaresHTTPAPI;
     private AntaresAPI self;
-    String result = "";
 
     public AntaresAPI(){
         this.antaresHTTPAPI = new AntaresHTTPAPI();
         this.self = this;
     }
 
-
+    // get method
     public CompletableFuture<String> getLatestDataOfDevice(
             String accessKey,
             String appName,
@@ -52,11 +49,12 @@ public class AntaresAPI {
         return future;
     }
 
+    // post method
     public void storeDataofDevice(
             String accessKey,
             String appName,
             String deviceName,
             String data){
-        antaresHTTPAPI.storeDataofDevice(accessKey, appName, deviceName, "");
+        antaresHTTPAPI.storeDataofDevice(accessKey, appName, deviceName, data);
     }
 }

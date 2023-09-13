@@ -3,25 +3,41 @@ package com.tugasakhir.myapplication.ui.automatic;
 import com.tugasakhir.myapplication.handler.AntaresAPI;
 import com.tugasakhir.myapplication.variables.GlobalVariable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.concurrent.CompletableFuture;
 
 
 public class AutomaticViewLogic {
 
-    private GlobalVariable globalVariable;
-    private AntaresAPI antaresAPI;
+    private GlobalVariable a;
+    private AntaresAPI b;
 
     public AutomaticViewLogic(){
-        this.globalVariable = new GlobalVariable();
-        this.antaresAPI = new AntaresAPI();
+        a = new GlobalVariable();
+        b = new AntaresAPI();
     }
 
+    ////////////////////////////////////////////////////
     public CompletableFuture<String> getData() {
-        return antaresAPI.getLatestDataOfDevice(
-                globalVariable.accessKey,
-                globalVariable.applicationName,
-                globalVariable.deviceName
+        return b.getLatestDataOfDevice(
+                a.accessKey,
+                a.applicationName,
+                a.deviceName
         );
     }
+
+
+    public void postDataStart(){
+
+        String nested = "{\\\"a\\\": \\\"3\\\",\\\"b\\\":\\\"5\\\"}";
+
+        String jsonString = "{\\\"status\\\": \\\"3\\\",\\\"status\\\": \\\"5\\\",\\\"nested\\\":"+nested+"}";
+
+        b.storeDataofDevice(a.accessKey, a.applicationName, a.deviceName, jsonString);
+    }
+
+    public void postDataStop(){}
 
 }
